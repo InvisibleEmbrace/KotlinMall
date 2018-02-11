@@ -2,6 +2,11 @@
 
 buildscript {
     ext.kotlin_version = '1.2.21'
+    //anko
+    ext.anko_version='0.10.4'
+    //rx
+    ext.rx_kotlin_version = '1.0.0'
+    ext.rx_android_version ='1.2.1'
 
     repositories {
         google()
