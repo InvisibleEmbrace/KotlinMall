@@ -6,13 +6,16 @@ import android.support.v4.content.ContextCompat.startActivity
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.user.R
 import com.kotlin.user.R.id.mRegister
+import com.kotlin.user.injection.component.DaggerUserComponent
+import com.kotlin.user.injection.module.UserModule
 import com.kotlin.user.presenter.RegisterPresenter
 import com.kotlin.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
+
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
+
     override fun onRegisterResult(result: Boolean) {
         toast("注册成功")
     }
@@ -20,10 +23,14 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        mPresenter = RegisterPresenter()
-        mPresenter.mView = this
+        initInjection()
         mRegister.setOnClickListener {
-           mPresenter.register("","","")
+            mPresenter.register(mMobileEt.text.toString(), mPwdEt.text.toString(), mVerifyCodeEt.text.toString())
         }
+    }
+
+    private fun initInjection() {
+        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
+        mPresenter.mView = this
     }
 }

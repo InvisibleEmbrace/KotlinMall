@@ -3,13 +3,17 @@
 buildscript {
     ext.kotlin_version = '1.2.21'
     //anko
-    ext.anko_version='0.10.4'
+    ext.anko_version = '0.10.1'
     //rx
     ext.rx_kotlin_version = '1.0.0'
     ext.rx_android_version ='1.2.1'
     //net
     ext.ok_http_version = '3.4.1'
     ext.retrofit_version = '2.1.0'
+    //dagger2
+    ext.dagger_version = '2.11'
+
+
     repositories {
         google()
         jcenter()
