@@ -14,7 +14,7 @@ import javax.inject.Inject
 /**
  * Created by Administrator on 2018/2/11/011.
  */
-open class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
+abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
     override fun showLoading() {
 
     }
@@ -33,7 +33,10 @@ open class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initActivityInjection()
+        injectionComponent()
     }
+
+    abstract fun injectionComponent()
 
     private fun initActivityInjection() {
         activityComponent = DaggerActivityComponent.builder().appComponent((application as BaseApplication).appComponent)
