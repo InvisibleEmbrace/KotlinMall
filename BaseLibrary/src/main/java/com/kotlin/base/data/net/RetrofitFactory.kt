@@ -1,6 +1,6 @@
 package com.kotlin.base.data.net
 
-import com.kotlin.base.common.Constant
+import com.kotlin.base.common.BaseConstant
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,7 +39,7 @@ class RetrofitFactory private constructor() {
             chain.proceed(request)
         }
         retrofit = Retrofit.Builder()
-                .baseUrl(Constant.SERVER_ADDRESS)
+                .baseUrl(BaseConstant.SERVER_ADDRESS)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(initClient())

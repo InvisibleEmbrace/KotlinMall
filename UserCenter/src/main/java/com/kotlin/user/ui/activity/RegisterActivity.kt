@@ -4,12 +4,15 @@ import android.os.Bundle
 import com.kotlin.base.common.AppManager
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
+import com.kotlin.base.ui.activity.BaseMvpFragment
 import com.kotlin.user.R
+import com.kotlin.user.R.id.*
 import com.kotlin.user.injection.component.DaggerUserComponent
 import com.kotlin.user.injection.module.UserModule
 import com.kotlin.user.presenter.RegisterPresenter
 import com.kotlin.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
 
 
@@ -34,6 +37,11 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         mRegister.onClick {
             mPresenter.register(mMobileEt.text.toString(), mPwdEt.text.toString(), mVerifyCodeEt.text.toString())
         }
+        //点击发送验证码
+        mGetVerifyCodeBtn.onClick {
+            mGetVerifyCodeBtn.requestSendVerifyNumber()
+        }
+
     }
 
     override fun onBackPressed() {
