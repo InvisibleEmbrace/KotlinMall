@@ -26,7 +26,7 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Vie
     private fun initView() {
         AlertView("上传头像", null, "取消", null,
                 arrayOf("拍照", "从相册中选择"),
-                this, AlertView.Style.ActionSheet, OnItemClickListener { o, position ->
+                this, AlertView.Style.ActionSheet, OnItemClickListener { _, position ->
             when (position) {
                 0 -> toast("拍照")
                 1 -> toast("相册")
