@@ -16,6 +16,12 @@ buildscript {
     ext.rx_lifecycle_version = '1.0'
     //glide
     ext.glide_version = "3.7.0"
+    //圆形图片
+    ext.circle_imageView_version = "2.1.0"
+    //选择图片
+    ext.take_photo_version = "4.0.3"
+    //弹框
+    ext.alert_view_version = "1.0.3"
     repositories {
         google()
         jcenter()
