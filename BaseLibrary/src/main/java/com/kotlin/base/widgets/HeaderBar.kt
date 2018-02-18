@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.layout_header_bar.view.*
 /**
  * Created by Administrator on 2018/2/14/014.
  */
-class HeadBar @JvmOverloads constructor(
+class HeaderBar @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr) {
 
     private var isShowBack = true

@@ -1,7 +1,9 @@
 package com.kotlin.user.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import com.kotlin.base.common.AppManager
+import com.kotlin.base.ext.enable
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.base.ui.activity.BaseMvpFragment
@@ -16,7 +18,8 @@ import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
 
 
-class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
+class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, View.OnClickListener {
+
 
     private var pressTime: Long = 0
 
@@ -34,13 +37,18 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        mRegister.onClick {
-            mPresenter.register(mMobileEt.text.toString(), mPwdEt.text.toString(), mVerifyCodeEt.text.toString())
-        }
-        //点击发送验证码
-        mGetVerifyCodeBtn.onClick {
-            mGetVerifyCodeBtn.requestSendVerifyNumber()
-        }
+        initView()
+    }
+
+    private fun initView() {
+
+        mRegisterBtn.enable(mMobileEt, { isBtnEnable() })
+        mRegisterBtn.enable(mVerifyCodeEt, { isBtnEnable() })
+        mRegisterBtn.enable(mPwdEt, { isBtnEnable() })
+        mRegisterBtn.enable(mPwdConfirmEt, { isBtnEnable() })
+
+        mVerifyCodeBtn.onClick(this)
+        mRegisterBtn.onClick(this)
 
     }
 
@@ -52,6 +60,27 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         } else {
             AppManager.instance.exitApp(this)
         }
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.mVerifyCodeBtn -> {
+                //倒计时
+                mVerifyCodeBtn.requestSendVerifyNumber()
+                toast("发送验证码成功")
+            }
+            R.id.mRegisterBtn -> {
+                mPresenter.register(mMobileEt.text.toString(), mPwdEt.text.toString(), mVerifyCodeEt.text.toString())
+            }
+        }
+    }
+
+    //判断注册页面的值是否全部填写
+    private fun isBtnEnable(): Boolean {
+        return mMobileEt.text.isNullOrEmpty().not()
+                && mVerifyCodeBtn.text.isNullOrEmpty().not()
+                && mPwdEt.text.isNullOrEmpty().not()
+                && mPwdConfirmEt.text.isNullOrEmpty().not()
     }
 
 }
