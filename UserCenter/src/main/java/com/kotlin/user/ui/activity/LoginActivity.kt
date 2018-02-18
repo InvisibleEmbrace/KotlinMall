@@ -17,6 +17,9 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
+/**
+ * 登录界面
+ */
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClickListener {
 
 
@@ -38,6 +41,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         //通过扩展是不能直接使用 mHeaderBar.mRightTv
         //否则会报错
         mHeaderBar.getReightView().onClick(this)
+        mForgetPwdTv.onClick(this)
     }
 
     /**
@@ -57,10 +61,16 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
 
     override fun onClick(view: View) {
         when (view.id) {
-        R.id.mRightTv -> {startActivity<RegisterActivity>()}
+            R.id.mRightTv -> {
+                startActivity<RegisterActivity>()
+            }
 
             R.id.mLoginBtn -> {
                 mPresenter.login(mMobileEt.text.toString(), mPwdEt.text.toString(), "")
+            }
+
+            R.id.mForgetPwdTv -> {
+                startActivity<ForgetPwdActivity>()
             }
         }
     }
