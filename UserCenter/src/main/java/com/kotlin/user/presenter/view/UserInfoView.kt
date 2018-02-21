@@ -10,4 +10,9 @@ interface UserInfoView : BaseView {
 
     fun onUserInfoResult(result: String)
 
+    /*
+      获取上传凭证回调
+   */
+    fun onGetUploadTokenResult(result:String)
+
 }

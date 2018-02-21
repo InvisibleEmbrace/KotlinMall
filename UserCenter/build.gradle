@@ -8,6 +8,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 
+
 android {
     compileSdkVersion 26
 
@@ -51,7 +52,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     api project(':Provider')
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
 }
 
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'

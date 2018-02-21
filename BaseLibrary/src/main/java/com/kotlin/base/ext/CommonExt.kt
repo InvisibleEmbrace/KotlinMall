@@ -17,7 +17,7 @@ import rx.schedulers.Schedulers
 /**
  * Created by Administrator on 2018/2/11/011.
  */
-fun <T> Observable<T>.execute(subscriber: BaseSubscriber<T>, lifecycleProvider: LifecycleProvider<*>) {
+fun <T> Observable<T>.excute(subscriber: BaseSubscriber<T>, lifecycleProvider: LifecycleProvider<*>) {
     this.observeOn(AndroidSchedulers.mainThread())
             .compose(lifecycleProvider.bindToLifecycle())
             .subscribeOn(Schedulers.io())

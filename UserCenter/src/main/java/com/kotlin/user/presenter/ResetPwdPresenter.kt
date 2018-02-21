@@ -1,6 +1,6 @@
 package com.kotlin.user.presenter
 
-import com.kotlin.base.ext.execute
+import com.kotlin.base.ext.excute
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.rx.BaseSubscriber
 import com.kotlin.user.presenter.view.ResetPwdView
@@ -24,7 +24,7 @@ class ResetPwdPresenter @Inject constructor() : BasePresenter<ResetPwdView>() {
         mView.showLoading()
 
         userService.resetPwd(mobile, pwd)
-                .execute(object : BaseSubscriber<Boolean>(mView) {
+                .excute(object : BaseSubscriber<Boolean>(mView) {
                     override fun onNext(t: Boolean) {
                         if (t) {
                             mView.onResetPwdResult("重置密码成功")

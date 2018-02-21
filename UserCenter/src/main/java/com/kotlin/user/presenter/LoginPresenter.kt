@@ -1,11 +1,10 @@
 package com.kotlin.user.presenter
 
-import com.kotlin.base.ext.execute
+import com.kotlin.base.ext.excute
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.rx.BaseSubscriber
 import com.kotlin.user.data.protocol.UserInfo
 import com.kotlin.user.presenter.view.LoginView
-import com.kotlin.user.service.UserService
 import com.kotlin.user.service.impl.UserServiceImpl
 import javax.inject.Inject
 
@@ -28,7 +27,7 @@ class LoginPresenter @Inject constructor() : BasePresenter<LoginView>() {
         //显示加载对话框
         mView.showLoading()
         userService.login(mobile, pwd, pushId)
-                .execute(object : BaseSubscriber<UserInfo>(mView) {
+                .excute(object : BaseSubscriber<UserInfo>(mView) {
                     override fun onNext(t: UserInfo) {
                         mView.onLoginResult(t)
                     }

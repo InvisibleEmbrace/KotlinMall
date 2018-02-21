@@ -1,10 +1,9 @@
 package com.kotlin.user.presenter
 
-import com.kotlin.base.ext.execute
+import com.kotlin.base.ext.excute
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.rx.BaseSubscriber
 import com.kotlin.user.presenter.view.ForgetPwdView
-import com.kotlin.user.presenter.view.RegisterView
 import com.kotlin.user.service.impl.UserServiceImpl
 import javax.inject.Inject
 
@@ -23,7 +22,7 @@ class ForgetPwdPresenter @Inject constructor() : BasePresenter<ForgetPwdView>() 
         }
         mView.showLoading()
 
-        userService.forgetPwd(mobile, verifyCode).execute(object : BaseSubscriber<Boolean>(mView) {
+        userService.forgetPwd(mobile, verifyCode).excute(object : BaseSubscriber<Boolean>(mView) {
             override fun onNext(t: Boolean) {
                 if (t)
                     mView.onForgetPwdResult("验证成功")
