@@ -1,17 +1,11 @@
 package com.kotlin.user.service.impl
 
-import android.os.Build.VERSION_CODES.O
-import com.kotlin.base.data.protocol.BaseResp
-import com.kotlin.base.exception.BaseException
 import com.kotlin.base.ext.convert
 import com.kotlin.base.ext.convertBoolean
-import com.kotlin.base.rx.BaseFuncBoolean
 import com.kotlin.user.data.protocol.UserInfo
-import com.kotlin.user.repository.UserRepository
+import com.kotlin.user.data.repository.UserRepository
 import com.kotlin.user.service.UserService
 import rx.Observable
-import rx.Observer
-import rx.functions.Func1
 import javax.inject.Inject
 
 /**

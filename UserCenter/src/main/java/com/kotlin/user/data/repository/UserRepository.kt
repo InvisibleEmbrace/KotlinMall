@@ -1,4 +1,4 @@
-package com.kotlin.user.repository
+package com.kotlin.user.data.repository
 
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.data.protocol.BaseResp
